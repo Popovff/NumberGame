@@ -11,16 +11,22 @@ def check_guess(secret, guess):
 
 def main():
     secret = random.randint(1, 100)
+    attempts = 0  # счётчик попыток
     print("Я загадал число от 1 до 100. Попробуйте угадать!")
+    
     while True:
         try:
             guess = int(input("Ваше предположение: "))
         except ValueError:
             print("Пожалуйста, введите число.")
             continue
+        
+        attempts += 1  # увеличиваем счётчик
         result = check_guess(secret, guess)
         print(result)
+        
         if result == "Поздравляю! Вы угадали!":
+            print(f"Вы справились за {attempts} попыток!")  # итоговое сообщение
             break
 
 if __name__ == "__main__":
